@@ -7,3 +7,18 @@ before_install:
 
 script:
   - docker run -e CI=true maxvfischer/docker-k8s-course npm run test
+
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+  region: "eu-north-1"
+  app: "docker-k8s-course"
+  env: "dockerk8scourse-env"
+  bucket_name: "elasticbeanstalk-eu-north-1-283799098295"
+  bucket_path: "docker-k8s-course"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_ACCESS_KEY"
+
