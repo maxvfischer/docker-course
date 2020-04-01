@@ -6,4 +6,4 @@ before_install:
   - docker build -t maxvfischer/docker-k8s-course -f Dockerfile.dev .
 
 script:
-  - docker run maxvfischer/docker-k8s-course npm run test -- --coverage
+  - docker run -e CI=true maxvfischer/docker-k8s-course npm run test
